@@ -1,0 +1,292 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0b0c10;
+  font-family: 'Cinzel', 'Georgia', 'Times New Roman', serif;
+  color: #f0e6d2;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+/* Age of Empires Top Resource Bar */
+#top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 38px;
+  background: linear-gradient(180deg, #2b1f14 0%, #17100a 85%, #0d0805 100%);
+  border-bottom: 2px solid #8e6d3f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 50;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.resource-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.resource-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #574127;
+  border-radius: 3px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.resource-icon {
+  font-size: 15px;
+}
+
+.age-banner {
+  background: linear-gradient(180deg, #614828 0%, #3d2a14 100%);
+  border: 1px solid #d4af37;
+  color: #ffd700;
+  padding: 4px 16px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.game-info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 13px;
+  color: #c7b299;
+}
+
+/* Bottom AOE Command Panel */
+#bottom-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(180deg, #231910 0%, #150e09 100%);
+  border-top: 3px solid #8e6d3f;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.8);
+  display: flex;
+  z-index: 50;
+}
+
+/* Minimap Box */
+#minimap-container {
+  width: 200px;
+  height: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid #574127;
+  background: #0f0a06;
+}
+
+#minimap-canvas {
+  width: 180px;
+  height: 130px;
+  background: #070707;
+  border: 2px solid #8e6d3f;
+  border-radius: 2px;
+  cursor: crosshair;
+}
+
+/* Selection Info Center */
+#selection-panel {
+  width: 280px;
+  padding: 12px 18px;
+  border-right: 2px solid #574127;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.selection-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selection-icon {
+  width: 44px;
+  height: 44px;
+  background: #1c140c;
+  border: 2px solid #8e6d3f;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.selection-title {
+  font-size: 16px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.selection-hp-bar {
+  width: 100%;
+  height: 10px;
+  background: #2b1111;
+  border: 1px solid #551111;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.selection-hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #109c10, #38d638);
+  width: 100%;
+  transition: width 0.2s ease;
+}
+
+.selection-stats {
+  font-size: 12px;
+  color: #b5a289;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+/* Action Command Card Grid */
+#command-card {
+  flex: 1;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cmd-btn {
+  width: 58px;
+  height: 58px;
+  background: linear-gradient(180deg, #38281a 0%, #20150b 100%);
+  border: 2px solid #8e6d3f;
+  border-radius: 4px;
+  color: #f0e6d2;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s ease;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.cmd-btn:hover {
+  background: linear-gradient(180deg, #4f3a26 0%, #312113 100%);
+  border-color: #ffd700;
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.cmd-btn:active {
+  transform: translateY(1px);
+}
+
+.cmd-btn .btn-badge {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 9px;
+  font-family: monospace;
+  color: #ffcc66;
+}
+
+.cmd-tooltip {
+  display: none;
+  position: absolute;
+  bottom: 66px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #17100a;
+  border: 1px solid #ffd700;
+  padding: 6px 10px;
+  font-size: 11px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+
+.cmd-btn:hover .cmd-tooltip {
+  display: block;
+}
+
+/* Instructions / Notification Overlay */
+#hint-box {
+  position: absolute;
+  top: 48px;
+  left: 16px;
+  background: rgba(15, 10, 6, 0.85);
+  border: 1px solid #8e6d3f;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #e2d1bc;
+  z-index: 40;
+  pointer-events: none;
+  line-height: 1.5;
+}
+
+#hint-box kbd {
+  background: #332214;
+  border: 1px solid #775533;
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: #ffd700;
+  font-family: monospace;
+}
+
+/* Selection drag box */
+#selection-box {
+  position: absolute;
+  border: 1px solid #00ff66;
+  background-color: rgba(0, 255, 100, 0.15);
+  pointer-events: none;
+  display: none;
+  z-index: 30;
+}

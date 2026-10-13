@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Age of Empires Web RTS</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/icon.svg" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Top Resource Bar -->
+    <header id="top-bar">
+      <div class="resource-group">
+        <div class="resource-item" title="Comida (Food)">
+          <span class="resource-icon">🥩</span>
+          <span id="res-food">200</span>
+        </div>
+        <div class="resource-item" title="Madera (Wood)">
+          <span class="resource-icon">🪵</span>
+          <span id="res-wood">200</span>
+        </div>
+        <div class="resource-item" title="Oro (Gold)">
+          <span class="resource-icon">🪙</span>
+          <span id="res-gold">100</span>
+        </div>
+        <div class="resource-item" title="Piedra (Stone)">
+          <span class="resource-icon">🧱</span>
+          <span id="res-stone">100</span>
+        </div>
+        <div class="resource-item" title="Población (Population)">
+          <span class="resource-icon">🧑</span>
+          <span id="res-pop">4 / 10</span>
+        </div>
+      </div>
+
+      <div class="age-banner">Edad Oscura</div>
+
+      <div class="game-info">
+        <span>FPS: <strong id="fps-display">60</strong></span>
+        <span>Unidades: <strong id="units-count">4</strong></span>
+      </div>
+    </header>
+
+    <!-- Canvas Game Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Drag Marquee Selection Box -->
+    <div id="selection-box"></div>
+
+    <!-- Gameplay controls hints -->
+    <div id="hint-box">
+      <div>🖱️ <strong>Click izquierdo:</strong> Seleccionar o arrastrar caja de selección</div>
+      <div>🎯 <strong>Click derecho:</strong> Mover o recolectar recursos</div>
+      <div>⌨️ <strong>W / A / S / D o Flechas:</strong> Desplazar cámara</div>
+      <div>🔍 <strong>Rueda del ratón:</strong> Zoom In / Out</div>
+    </div>
+
+    <!-- Bottom AoE Command Panel -->
+    <footer id="bottom-panel">
+      <!-- Minimap -->
+      <div id="minimap-container">
+        <canvas id="minimap-canvas" width="180" height="130"></canvas>
+      </div>
+
+      <!-- Selection details -->
+      <div id="selection-panel">
+        <div class="selection-header">
+          <div class="selection-icon" id="sel-icon">🏰</div>
+          <div>
+            <div class="selection-title" id="sel-name">Centro Urbano</div>
+            <div style="font-size: 11px; color: #a8947f;" id="sel-sub">Edificio Principal</div>
+          </div>
+        </div>
+        <div class="selection-hp-bar">
+          <div class="selection-hp-fill" id="sel-hp-fill"></div>
+        </div>
+        <div class="selection-stats" id="sel-stats">
+          <span>PV: <b id="sel-hp">2400 / 2400</b></span>
+          <span>Ataque: <b id="sel-attack">5</b></span>
+          <span>Alcance: <b id="sel-range">6</b></span>
+          <span>Armadura: <b id="sel-armor">2 / 5</b></span>
+        </div>
+      </div>
+
+      <!-- Command Actions -->
+      <div id="command-card">
+        <!-- Buttons are dynamically bound according to selection -->
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
